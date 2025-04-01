@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import AccessHeader from "./components/AccessHeader";
 import AccessTab from "./components/AccessTab";
 import AccessFilter from "./components/AccessFilter";
@@ -13,7 +13,7 @@ const AccessManagement: React.FC = () => {
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
 
   return (
-    <Container maxWidth="xl" sx={{ backgroundColor: "#f3e5f5", p: 3, borderRadius: 2, boxShadow: 3 }}>
+    <Box sx={{ backgroundColor: "white", p: 3, borderRadius: 2,}}>
       <AccessHeader />
 
       <AccessTab tabIndex={tabIndex} setTabIndex={setTabIndex} />
@@ -25,13 +25,28 @@ const AccessManagement: React.FC = () => {
         showPermissions={showPermissions}
       />
 
-      <AccessTable
-        page={page}
-        rowsPerPage={rowsPerPage}
-        setPage={setPage}
-        setRowsPerPage={setRowsPerPage}
-      />
-    </Container>
+      {
+        (() => {
+          if (tabIndex === 0) {
+            return (
+              <AccessTable
+                page={page}
+                rowsPerPage={rowsPerPage}
+                setPage={setPage}
+                setRowsPerPage={setRowsPerPage}
+              />
+            );
+          }
+          else if (tabIndex === 1) {
+            return (
+              null
+            );
+          } else {
+            return null
+          }
+        })()
+      }
+    </Box>
   );
 };
 

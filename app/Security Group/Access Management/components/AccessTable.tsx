@@ -109,9 +109,12 @@ const AccessTable = ({ page, rowsPerPage, setPage, setRowsPerPage }: TabPanelPro
                                         display: "flex",
                                         alignItems: "center",
                                         gap: 1,
-                                        padding: "4px 8px",
+                                        padding: "6px 10px",
                                         borderRadius: "12px",
                                         ...getTypeStyle(row.type),
+                                        width: "fit-content",
+                                        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+                                        border: "1px solid rgba(0, 0, 0, 0.2)",
                                     }}
                                 >
                                     {getTypeIcon(row.type)}
